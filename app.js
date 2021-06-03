@@ -44,3 +44,26 @@ function errorMsgBanner() {
     ERROR_MSG.remove();
   }, 3000)
 }
+
+
+const CARDS_CONTAINER_SELECTOR = document.querySelector(".cards-container");
+
+testFunction();
+
+function testFunction() {
+  CARDS_CONTAINER_SELECTOR.addEventListener("click", clickTesting);
+}
+
+function clickTesting(event) {
+  if(event.target.classList.contains('card-body')) {
+    //console.log(event.target)
+    const PARENT_NEW_ELEMENT = document.querySelector('#michiCardsContainer');
+    const NEW_CHILD_ELEMENT = document.createElement('p');
+    NEW_CHILD_ELEMENT.textContent = 'En estos momentos no es posible realizar esa acción';
+    NEW_CHILD_ELEMENT.classList.add('warning');
+    PARENT_NEW_ELEMENT.append(NEW_CHILD_ELEMENT);
+    setTimeout(() => {
+      NEW_CHILD_ELEMENT.remove();
+    }, 3000);
+  }
+}
