@@ -96,7 +96,7 @@ body {
   background-color: #50aaaa;
 }
 
-.michi-card {
+.michiCardArticle {
   width: 270px;
   height: 385px;
   border-radius: 16px;
@@ -253,6 +253,19 @@ li a:hover {
   font-size: 1.4rem;
   border-width: 1px;
   border-color: green;
+  border-style: solid;
+  padding: 10px;
+  color: #000;
+  width: 400px;
+}
+
+.warning {
+  margin-top: 50px;
+  background-color: lightyellow;
+  text-align: center;
+  font-size: 1.4rem;
+  border-width: 1px;
+  border-color: yellow;
   border-style: solid;
   padding: 10px;
   color: #000;
