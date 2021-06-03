@@ -239,7 +239,22 @@ li a:hover {
   text-align: center;
   font-size: 1.4rem;
   border-color: red;
+  border-width: 1px;
+  border-style: solid;
   padding: 10px;
   color: #ffffff;
+  width: 400px;
+}
+
+.success {
+  margin-top: 50px;
+  background-color: lightgreen;
+  text-align: center;
+  font-size: 1.4rem;
+  border-width: 1px;
+  border-color: green;
+  border-style: solid;
+  padding: 10px;
+  color: #000;
   width: 400px;
 }

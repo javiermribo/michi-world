@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css" />
-    <title>Document</title>
+    <title>Mundo Michi</title>
   </head>
   <body class="p-0" id="bodyIdItem">
     <header>
@@ -101,20 +101,20 @@
         </p>
         <button class="world-domination btn mt-3" id="subscription-btn">Quiero ser parte</button>
     </section>
-    <section class="newsletter-suscription py-5 d-flex align-items-center flex-column">
+    <section class="newsletter-suscription py-5 d-flex align-items-center flex-column" id="newsletterSectionId">
       <h2 class="newsletter-title-suscription pb-3">Suscribete a nuestra newsletter para estar al tanto de lo que sucede
         en Mundo Michi
       </h2>
-      <form class="input-form d-flex align-items-center flex-column">
+      <form class="input-form d-flex align-items-center flex-column" id="formInputs">
         <div class="form-group">
           <label for="name-input-form" class="name-input-form">Tu nombre</label>
-          <input type="text" class="form-control" id="name-input-form" placeholder="Homero Thompson" required>
+          <input type="text" class="form-control" placeholder="Homero Thompson" id="formInputName" >
         </div>
         <div class="form-group">
           <label for="text" class="name-input-form2">Tu correo electronico</label>
-          <input type="text" class="form-control" id="name-input-form2" placeholder="tucorreo@email.com" required>
+          <input type="text" class="form-control" placeholder="tucorreo@email.com" id="formInputEmail" >
         </div>
-        <button type="submit" class="btn p-3 mt-3"><a href="#">Suscribirse</a></button>
+        <button type="submit" class="btn p-3 mt-3" id="aBtnNewsletter">Suscribirse</button>
       </form>
     </section>
     <footer class="d-flex justify-content-around py-5">
