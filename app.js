@@ -35,25 +35,41 @@ function subscriptionBtnListener() {
 }
 
 function errorSubscriptionMsg() {
-  const SECTION_SELECTOR = document.querySelector("#cat-domination-plan");
+  removeDuplicateSubscription();
+  const SUBSCRIPTION_ERROR_CONTAINER = document.querySelector("#subscriptionErrorContainer");
   const ERROR_MSG = document.createElement("p");
   ERROR_MSG.textContent = "¡Lo sentimos! Algo salió mal.";
   ERROR_MSG.classList.add("error");
-  SECTION_SELECTOR.append(ERROR_MSG);
+  SUBSCRIPTION_ERROR_CONTAINER.append(ERROR_MSG);
   setTimeout(() => {
     ERROR_MSG.remove();
   }, 3000);
 }
 
+function removeDuplicateSubscription() {
+  const SUBSCRIPTION_ERROR_CONTAINER = document.querySelector("#subscriptionErrorContainer");
+  if (SUBSCRIPTION_ERROR_CONTAINER.lastChild) {
+    SUBSCRIPTION_ERROR_CONTAINER.removeChild(SUBSCRIPTION_ERROR_CONTAINER.lastChild);
+  }
+}
+
 function errorNewsletterMsg () {
-  const NEWSLETTER_ID_SELECTOR = document.querySelector("#newsletterSectionId");
+  removeDuplicateNews();
+  const ERROR_NEWS_CONTAINER = document.querySelector("#errorMsgContainer");
   const ERROR_MSG = document.createElement("p");
   ERROR_MSG.textContent = "No puedes enviar el formulario con campos vacíos";
   ERROR_MSG.classList.add("error");
-  NEWSLETTER_ID_SELECTOR.append(ERROR_MSG);
+  ERROR_NEWS_CONTAINER.append(ERROR_MSG);
   setTimeout(() => {
    ERROR_MSG.remove();
   }, 3000);
+}
+
+function removeDuplicateNews() {
+  const ERROR_NEWS_CONTAINER = document.querySelector("#errorMsgContainer");
+  if(ERROR_NEWS_CONTAINER.lastChild) {
+    ERROR_NEWS_CONTAINER.removeChild(ERROR_NEWS_CONTAINER.lastChild);
+  }
 }
 
 
