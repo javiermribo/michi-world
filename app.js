@@ -27,13 +27,15 @@ function successNewsletterMsg(event) {
 }
 }
 
-const SUBSCRIPTION_BTN_SELECTOR = document.querySelector("#cat-domination-plan");
+const SUBSCRIPTION_BTN_SELECTOR = document.querySelector("#aBtnNewsletter");
+const BE_PART_SELECTOR = document.querySelector("#subscription-btn");
 
 
 subscriptionBtnListener();
 
 function subscriptionBtnListener() {
-  SUBSCRIPTION_BTN_SELECTOR.addEventListener('click', errorSubscriptionMsg);
+  BE_PART_SELECTOR.addEventListener('click', errorSubscriptionMsg);
+  SUBSCRIPTION_BTN_SELECTOR.addEventListener('submit', errorSubscriptionMsg);
 }
 
 function errorSubscriptionMsg() {
