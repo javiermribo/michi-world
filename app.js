@@ -7,14 +7,15 @@ function successNewsletterListener() {
   NEWSLETTER_BTN_SELECTOR.addEventListener('click', successNewsletterMsg);
 }
 
+const FORM_INPUT_NAME = document.querySelector('#formInputName').value;
+const FORM_INPUT_EMAIL = document.querySelector('#formInputEmail').value;
+
 function successNewsletterMsg(event) {
   event.preventDefault();
-  const FORM_INPUT_NAME = document.querySelector('#formInputName').value;
-  const FORM_INPUT_EMAIL = document.querySelector('#formInputEmail').value;
-  if(FORM_INPUT_NAME.length >= 0 && FORM_INPUT_EMAIL.length >= 0) {
+  if(FORM_INPUT_NAME.length === 0 && FORM_INPUT_EMAIL.length === 0) {
     errorNewsletterMsg();
-    return;
-  }
+  } 
+  else if (FORM_INPUT_NAME.length > 0 && FORM_INPUT_EMAIL.length > 0) {
   const NEWSLETTER_SECTION_SELECTOR = document.querySelector('#newsletterSectionId');
   const SUCCESS_MSG = document.createElement('p');
   SUCCESS_MSG.textContent = 'Tus datos fueron registrados correctamente, pronto recibirás un mensaje de confirmación en tu correo electrónico.';
@@ -23,6 +24,7 @@ function successNewsletterMsg(event) {
   setTimeout(() => {
     SUCCESS_MSG.remove();
   }, 5000);
+}
 }
 
 const SUBSCRIPTION_BTN_SELECTOR = document.querySelector("#cat-domination-plan");
