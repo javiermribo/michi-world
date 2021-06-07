@@ -1,10 +1,15 @@
-const NEWSLETTER_BTN_SELECTOR = document.querySelector('#aBtnNewsletter');
+const NEWSLETTER_BTN_SELECTOR = document.querySelector("#aBtnNewsletter");
+const NEWSLETTER_A_SELECTOR = document.querySelector("#aBtnNewsletterId");
 const FORM_SELECTOR = document.querySelector('#formInputs');
+const SUBSCRIPTION_BTN_SELECTOR = document.querySelector("#subscription-btn");
+const BE_PART_SELECTOR = document.querySelector("#subscription-btn");
+const CARDS_CONTAINER_SELECTOR = document.querySelector(".cards-container");
 
 successNewsletterListener();
 
 function successNewsletterListener() {
-  NEWSLETTER_BTN_SELECTOR.addEventListener('click', successNewsletterMsg);
+  const NEWSLETTER_A_SELECTOR = addEventListener('submit', successNewsletterMsg);
+  NEWSLETTER_BTN_SELECTOR.addEventListener('submit', successNewsletterMsg);
 }
 
 const FORM_INPUT_NAME = document.querySelector('#formInputName').value;
@@ -16,26 +21,22 @@ function successNewsletterMsg(event) {
     errorNewsletterMsg();
   } 
   else if (FORM_INPUT_NAME.length > 0 && FORM_INPUT_EMAIL.length > 0) {
-  const NEWSLETTER_SECTION_SELECTOR = document.querySelector('#newsletterSectionId');
-  const SUCCESS_MSG = document.createElement('p');
-  SUCCESS_MSG.textContent = 'Tus datos fueron registrados correctamente, pronto recibirás un mensaje de confirmación en tu correo electrónico.';
-  SUCCESS_MSG.classList.add('success');
-  NEWSLETTER_SECTION_SELECTOR.append(SUCCESS_MSG);
-  setTimeout(() => {
-    SUCCESS_MSG.remove();
-  }, 5000);
+    const NEWSLETTER_SECTION_SELECTOR = document.querySelector('#newsletterSectionId');
+    const SUCCESS_MSG = document.createElement('p');
+    SUCCESS_MSG.textContent = 'Tus datos fueron registrados correctamente, pronto recibirás un mensaje de confirmación en tu correo electrónico.';
+    SUCCESS_MSG.classList.add('success');
+    NEWSLETTER_SECTION_SELECTOR.append(SUCCESS_MSG);
+    setTimeout(() => {
+      SUCCESS_MSG.remove();
+    }, 5000);
 }
 }
-
-const SUBSCRIPTION_BTN_SELECTOR = document.querySelector("#aBtnNewsletter");
-const BE_PART_SELECTOR = document.querySelector("#subscription-btn");
-
 
 subscriptionBtnListener();
 
 function subscriptionBtnListener() {
   BE_PART_SELECTOR.addEventListener('click', errorSubscriptionMsg);
-  SUBSCRIPTION_BTN_SELECTOR.addEventListener('submit', errorSubscriptionMsg);
+  SUBSCRIPTION_BTN_SELECTOR.addEventListener('click', errorSubscriptionMsg);
 }
 
 function errorSubscriptionMsg() {
@@ -75,9 +76,6 @@ function removeDuplicateNews() {
     ERROR_NEWS_CONTAINER.removeChild(ERROR_NEWS_CONTAINER.lastChild);
   }
 }
-
-
-const CARDS_CONTAINER_SELECTOR = document.querySelector(".cards-container");
 
 testFunction();
 
