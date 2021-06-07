@@ -5,21 +5,24 @@ const SUBSCRIPTION_BTN_SELECTOR = document.querySelector("#subscription-btn");
 const BE_PART_SELECTOR = document.querySelector("#subscription-btn");
 const CARDS_CONTAINER_SELECTOR = document.querySelector(".cards-container");
 
-successNewsletterListener();
+eventListeners();
 
-function successNewsletterListener() {
+function eventListeners() {
   FORM_SELECTOR.addEventListener('submit', successNewsletterMsg);
+  BE_PART_SELECTOR.addEventListener("click", errorSubscriptionMsg);
+  SUBSCRIPTION_BTN_SELECTOR.addEventListener("click", errorSubscriptionMsg);
+  CARDS_CONTAINER_SELECTOR.addEventListener("click", clickTesting);
 }
 
-const FORM_INPUT_NAME = document.querySelector('#formInputName').value;
-const FORM_INPUT_EMAIL = document.querySelector('#formInputEmail').value;
 
 function successNewsletterMsg(event) {
   event.preventDefault();
-  if(FORM_INPUT_NAME.length === 0 && FORM_INPUT_EMAIL.length === 0) {
+  const FORM_INPUT_NAME = document.querySelector('#formInputName').value;
+  const FORM_INPUT_EMAIL = document.querySelector('#formInputEmail').value;
+  if(FORM_INPUT_NAME.length <= 0 && FORM_INPUT_EMAIL.length <= 0) {
     errorNewsletterMsg();
   } 
-  else if (FORM_INPUT_NAME.length > 1 && FORM_INPUT_EMAIL.length > 1) {
+  else if(FORM_INPUT_NAME.length > 1 && FORM_INPUT_EMAIL.length > 1) {
     const NEWSLETTER_SECTION_SELECTOR = document.querySelector('#newsletterSectionId');
     const SUCCESS_MSG = document.createElement('p');
     SUCCESS_MSG.textContent = 'Tus datos fueron registrados correctamente, pronto recibirás un mensaje de confirmación en tu correo electrónico.';
@@ -28,14 +31,19 @@ function successNewsletterMsg(event) {
     setTimeout(() => {
       SUCCESS_MSG.remove();
     }, 5000);
-}
+  }
 }
 
-subscriptionBtnListener();
-
-function subscriptionBtnListener() {
-  BE_PART_SELECTOR.addEventListener('click', errorSubscriptionMsg);
-  SUBSCRIPTION_BTN_SELECTOR.addEventListener('click', errorSubscriptionMsg);
+function errorNewsletterMsg () {
+  removeDuplicateNews();
+  const ERROR_NEWS_CONTAINER = document.querySelector("#errorMsgContainer");
+  const ERROR_MSG = document.createElement("p");
+  ERROR_MSG.textContent = "No puedes enviar el formulario con campos vacíos";
+  ERROR_MSG.classList.add("error");
+  ERROR_NEWS_CONTAINER.append(ERROR_MSG);
+  setTimeout(() => {
+   ERROR_MSG.remove();
+  }, 3000);
 }
 
 function errorSubscriptionMsg() {
@@ -57,17 +65,6 @@ function removeDuplicateSubscription() {
   }
 }
 
-function errorNewsletterMsg () {
-  removeDuplicateNews();
-  const ERROR_NEWS_CONTAINER = document.querySelector("#errorMsgContainer");
-  const ERROR_MSG = document.createElement("p");
-  ERROR_MSG.textContent = "No puedes enviar el formulario con campos vacíos";
-  ERROR_MSG.classList.add("error");
-  ERROR_NEWS_CONTAINER.append(ERROR_MSG);
-  setTimeout(() => {
-   ERROR_MSG.remove();
-  }, 3000);
-}
 
 function removeDuplicateNews() {
   const ERROR_NEWS_CONTAINER = document.querySelector("#errorMsgContainer");
@@ -76,15 +73,8 @@ function removeDuplicateNews() {
   }
 }
 
-testFunction();
-
-function testFunction() {
-  CARDS_CONTAINER_SELECTOR.addEventListener("click", clickTesting);
-}
-
 function clickTesting(event) {
   if(event.target.classList.contains('card-body')) {
-    //console.log(event.target)
     const PARENT_NEW_ELEMENT = document.querySelector('#michiCardsContainer');
     const NEW_CHILD_ELEMENT = document.createElement('p');
     NEW_CHILD_ELEMENT.textContent = 'En estos momentos no es posible realizar esa acción';
