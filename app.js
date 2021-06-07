@@ -8,8 +8,7 @@ const CARDS_CONTAINER_SELECTOR = document.querySelector(".cards-container");
 successNewsletterListener();
 
 function successNewsletterListener() {
-  NEWSLETTER_A_SELECTOR.addEventListener('submit', successNewsletterMsg);
-  NEWSLETTER_BTN_SELECTOR.addEventListener('submit', successNewsletterMsg);
+  FORM_SELECTOR.addEventListener('submit', successNewsletterMsg);
 }
 
 const FORM_INPUT_NAME = document.querySelector('#formInputName').value;
@@ -20,7 +19,7 @@ function successNewsletterMsg(event) {
   if(FORM_INPUT_NAME.length === 0 && FORM_INPUT_EMAIL.length === 0) {
     errorNewsletterMsg();
   } 
-  else if (FORM_INPUT_NAME.length > 0 && FORM_INPUT_EMAIL.length > 0) {
+  else if (FORM_INPUT_NAME.length > 1 && FORM_INPUT_EMAIL.length > 1) {
     const NEWSLETTER_SECTION_SELECTOR = document.querySelector('#newsletterSectionId');
     const SUCCESS_MSG = document.createElement('p');
     SUCCESS_MSG.textContent = 'Tus datos fueron registrados correctamente, pronto recibirás un mensaje de confirmación en tu correo electrónico.';
