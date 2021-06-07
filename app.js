@@ -8,7 +8,7 @@ const CARDS_CONTAINER_SELECTOR = document.querySelector(".cards-container");
 successNewsletterListener();
 
 function successNewsletterListener() {
-  const NEWSLETTER_A_SELECTOR = addEventListener('submit', successNewsletterMsg);
+  NEWSLETTER_A_SELECTOR.addEventListener('submit', successNewsletterMsg);
   NEWSLETTER_BTN_SELECTOR.addEventListener('submit', successNewsletterMsg);
 }
 
