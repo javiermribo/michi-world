@@ -4,25 +4,40 @@ const FORM_SELECTOR = document.querySelector('#formInputs');
 const SUBSCRIPTION_BTN_SELECTOR = document.querySelector("#subscription-btn");
 const BE_PART_SELECTOR = document.querySelector("#subscription-btn");
 const CARDS_CONTAINER_SELECTOR = document.querySelector(".cards-container");
+const NAME_INPUT_FIELD_SELECTOR = document.querySelector('#formInputName');
+const EMAIL_INPUT_FIELD_SELECTOR = document.querySelector('#formInputEmail');
 
 eventListeners();
 
 function eventListeners() {
-  FORM_SELECTOR.addEventListener('submit', successNewsletterMsg);
+  FORM_SELECTOR.addEventListener('submit', notificationNewsletterMsg);
   BE_PART_SELECTOR.addEventListener("click", errorSubscriptionMsg);
   SUBSCRIPTION_BTN_SELECTOR.addEventListener("click", errorSubscriptionMsg);
   CARDS_CONTAINER_SELECTOR.addEventListener("click", clickTesting);
+  NAME_INPUT_FIELD_SELECTOR.addEventListener('blur', blurValidateForm);
+  EMAIL_INPUT_FIELD_SELECTOR.addEventListener('blur', blurValidateForm);
 }
 
+function blurValidateForm(event) {
+  const NAME_INPUT_FIELD_SELECTOR = document.querySelector("#formInputName").value;
+  const EMAIL_INPUT_FIELD_SELECTOR = document.querySelector("#formInputEmail").value;
+  if(NAME_INPUT_FIELD_SELECTOR.length > 1 || EMAIL_INPUT_FIELD_SELECTOR.length > 1) {
+    event.target.classList.add('border', 'border-success');
+    event.target.classList.remove("border", "border-danger");
+}
+  else {
+      event.target.classList.add("border", "border-danger");
+    } 
+}
 
-function successNewsletterMsg(event) {
+function notificationNewsletterMsg(event) {
   event.preventDefault();
   const FORM_INPUT_NAME = document.querySelector('#formInputName').value;
   const FORM_INPUT_EMAIL = document.querySelector('#formInputEmail').value;
-  if(FORM_INPUT_NAME.length <= 0 && FORM_INPUT_EMAIL.length <= 0) {
+  if(FORM_INPUT_NAME.length <= 0 || FORM_INPUT_EMAIL.length <= 0) {
     errorNewsletterMsg();
   } 
-  else if(FORM_INPUT_NAME.length > 1 && FORM_INPUT_EMAIL.length > 1) {
+  else if(FORM_INPUT_NAME.length > 1 || FORM_INPUT_EMAIL.length > 1) {
     const NEWSLETTER_SECTION_SELECTOR = document.querySelector('#newsletterSectionId');
     const SUCCESS_MSG = document.createElement('p');
     SUCCESS_MSG.textContent = 'Tus datos fueron registrados correctamente, pronto recibirás un mensaje de confirmación en tu correo electrónico.';
